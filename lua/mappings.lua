@@ -21,14 +21,6 @@ map("n", "<leader>dr", "<cmd> DapContinue<CR>", { desc  = "Run or continue the d
 map("n", "<F4>", "<cmd> NvimTreeToggle <CR>", { desc  = "toggle nvimtree" })
 map("n", "<leader>e", "<cmd> NvimTreeFocus <CR>", { desc  = "focus nvimtree" })
 
--- comment_additional and toggle it in both modes
-map("n", "gcc", function()
-  require("Comment.api").toggle.linewise.current()
-end, { desc  = "toggle comment" })
-
-map("v","gcc", "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>", { desc  = "toggle comment" })
-
-
 -- tabs
 map("n", "gt", function()
   require("nvchad.tabufline").next()
