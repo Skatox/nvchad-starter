@@ -1,32 +1,15 @@
 return {
+  -- Code formatting
   {
     "stevearc/conform.nvim",
     -- event = 'BufWritePre', -- uncomment for format on save
     opts = require "configs.conform",
   },
-
-  -- These are some examples, uncomment them if you want to see them work!
   {
     "neovim/nvim-lspconfig",
     config = function()
       require "configs.lspconfig"
     end,
-  },
-
-  -- {
-  -- 	"nvim-treesitter/nvim-treesitter",
-  -- 	opts = {
-  -- 		ensure_installed = {
-  -- 			"vim", "lua", "vimdoc",
-  --      "html", "css"
-  -- 		},
-  -- 	},
-  -- },
-  {
-    "nvim-tree/nvim-tree.lua",
-    opts = {
-      git = { enable = true },
-    },
   },
   {
     "williamboman/mason.nvim",
@@ -40,21 +23,53 @@ return {
     }
   },
   {
-    "tpope/vim-fugitive",
+  	"nvim-treesitter/nvim-treesitter",
+  	opts = {
+  		ensure_installed = {
+  			"vim", "lua", "vimdoc",
+       "html", "css", "php", "tsx"
+  		},
+  	},
+  },
+  {
+    "mhartington/formatter.nvim",
+    event = "VeryLazy",
+    opts = function ()
+      return require "configs.formatter"
+    end
+  },
+
+  -- Code edition
+  {
+    "tpope/vim-commentary"
+  },
+  {
+    "nvim-tree/nvim-tree.lua",
+    opts = {
+      git = { enable = true },
+    },
+  },
+  {
+    "tpope/vim-surround",
     lazy = false,
   },
   {
-    "phaazon/hop.nvim",
+    "tommcdo/vim-exchange",
+    lazy = false,
+  },
+
+  -- Code navigation
+  {
+    'smoka7/hop.nvim',
+    version = "*",
     lazy=false,
+    opts = {
+        keys = 'etovxqpdygfblzhckisuran'
+    },
     config = function()
       require'hop'.setup {}
       require "configs.hop-config"
     end,
-  },
-  { "michaeljsmith/vim-indent-object" },
-  {
-    "tpope/vim-surround",
-    lazy = false,
   },
   {
     "christoomey/vim-tmux-navigator",
@@ -63,14 +78,7 @@ return {
     end,
   },
 
-  -- IDE
-  -- {
-  --   "amiorin/vim-project",
-  --   lazy = false,
-  --   config = function()
-  --       vim.cmd("source ~/.config/nvim/lua/custom/configs/vim-project.nvim")
-  --   end,
-  -- },
+  -- Control version
   {
     "kdheepak/lazygit.nvim",
     cmd = {
@@ -94,6 +102,9 @@ return {
       { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" }
     }
   },
+  { "mhinz/vim-signify" },
+
+  -- IDE
   {
     "coffebar/neovim-project",
     opts = {
@@ -115,60 +126,13 @@ return {
     priority = 100,
   },
   {
-    "tpope/vim-obsession",
-    lazy = false,
-  },
-  { "dyng/ctrlsf.vim" },
-  { "Yggdroot/indentLine"},
-  { 
-    "inkarkat/vim-ReplaceWithRegister",
-    lazy = false,
-  },
-  {
-    "mg979/vim-visual-multi",
-    branch = "master",
-    lazy = false,
-    config = function()
-      require "configs.visual-multi"
-    end,
-  },
-  {
-    "mhartington/formatter.nvim",
-    event = "VeryLazy",
-    opts = function (options)
-      return require "configs.formatter"
-    end
-  },
-  { "mhinz/vim-signify" },
-  {
     "mfussenegger/nvim-dap",
     config = function ()
       require "configs.dap"
     end
   },
-  {
-    "rcarriga/nvim-dap-ui",
-    event = "VeryLazy",
-    dependencies = "mfussenegger/nvim-dap",
-    config = function ()
-      local dap = require("dap")
-      local dapui = require("dapui")
-      require("dapui").setup()
-      dap.listeners.after.event_initialized["dapui_config"] = function()
-        dapui.open()
-      end
-      dap.listeners.before.event_terminated["dapui_config"] = function ()
-        dapui.close()
-      end
-      dap.listeners.before.event_exited["dapui_config"] = function ()
-        dapui.close()
-      end
-    end
-  },
-  {
-    "tommcdo/vim-exchange",
-    lazy = false,
-  },
+
+  -- IA toodadls
   -- {
   --   "codota/tabnine-nvim",
   --   lazy = false,
@@ -179,7 +143,7 @@ return {
   --        accept_keymap="<Tab>",
   --        dismiss_keymap = "<C-]>",
   --        debounce_ms = 800,
-  --        suggestion_color = {gui = "#808080", cterm = 244},
+  --                   suggestion_color = {gui = "#808080", cterm = 244},
   --        exclude_filetypes = {"TelescopePrompt"}
   --     })
   --   end,
@@ -188,14 +152,41 @@ return {
     "github/copilot.vim",
     lazy = false
   },
+  -- Nvim UI
   {
     'mvllow/modes.nvim',
     tag = 'v0.2.0',
     lazy = false,
     config = function()
-       require('modes').setup()
+      require('modes').setup({
+      colors = {
+          bg = "", -- Optional bg param, defaults to Normal hl group
+          copy = "#f5c359",
+          delete = "#c75c6a",
+          insert = "#78ccc5",
+          visual = "#9745be",
+        },
+
+        -- Set opacity for cursorline and number background
+        line_opacity = 0.15,
+
+        -- Enable cursor highlights
+        set_cursor = true,
+
+        -- Enable cursorline initially, and disable cursorline for inactive windows
+        -- or ignored filetypes
+        set_cursorline = true,
+
+        -- Enable line number highlights to match cursorline
+        set_number = true,
+
+        -- Disable modes highlights in specified filetypes
+        -- Please PR commonly ignored filetypes
+        ignore_filetypes = { 'NvimTree', 'TelescopePrompt' }
+      });
     end
   },
+
   -- Overrides default config
   {
     "neovim/nvim-lspconfig",
@@ -224,6 +215,7 @@ return {
     "Galooshi/vim-import-js",
     lazy = false,
   },
+
 -- Improve VIM usage
   {
      "m4xshen/hardtime.nvim",
