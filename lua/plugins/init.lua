@@ -57,6 +57,8 @@ return {
     "tommcdo/vim-exchange",
     lazy = false,
   },
+  { "mg979/vim-visual-multi" },
+  { "inkarkat/vim-ReplaceWithRegister" },
 
   -- Code navigation
   {
@@ -131,7 +133,17 @@ return {
       require "configs.dap"
     end
   },
-
+  { "tpope/vim-obsession" },
+  {
+    "ThePrimeagen/refactoring.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+    },
+    config = function()
+      require("refactoring").setup()
+    end,
+  },
   -- IA toodadls
   -- {
   --   "codota/tabnine-nvim",
@@ -186,7 +198,29 @@ return {
       });
     end
   },
-
+  {
+    "rcarriga/nvim-notify",
+    opts = {
+      timeout = 5000,
+      background = "#FFFFFF";
+      render = "wrapped-compact",
+    },
+  },
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    opts = {
+      -- add any options here
+    },
+    dependencies = {
+      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+      "MunifTanjim/nui.nvim",
+      -- OPTIONAL:
+      --   `nvim-notify` is only needed, if you want to use the notification view.
+      --   If not available, we use `mini` as the fallback
+      "rcarriga/nvim-notify",
+      }
+  },
   -- Overrides default config
   {
     "neovim/nvim-lspconfig",
