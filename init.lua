@@ -40,6 +40,8 @@ end)
 vim.opt.relativenumber = true
 vim.g.neovide_scale_factor = 2.0
 vim.g.neovide_input_macos_alt_is_meta = true
+vim.g.copilot_node_command = "~/.nvm/versions/node/v23.0.0/bin/node"
+
 
 vim.opt.termguicolors = true
 
