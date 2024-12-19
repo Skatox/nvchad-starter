@@ -40,3 +40,8 @@ map("n", "<C-p>", "<cmd> Telescope find_files <CR>", { desc  = "find files" })
 map("n", "<D-p>", "<cmd> Telescope find_files <CR>",{ desc  =  "find files" })
 map("n", "<C-S-p>", "<cmd> Telescope live_grep <CR>", { desc  = "find in files" })
 map("n", "<D-S-p>", "<cmd> Telescope live_grep <CR>", { desc  = "find in files" })
+
+-- Copilot
+map("i", "<C-l>", function ()
+  vim.fn.feedKeys(vim.fn["copilot#Accept"](), "")
+end, { desc = "Copilot Accept", noremap = true, silent = true })

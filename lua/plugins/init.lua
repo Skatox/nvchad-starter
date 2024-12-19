@@ -105,12 +105,17 @@ return {
     }
   },
   { "mhinz/vim-signify" },
-
+  -- Task Manager
+  {
+    'stevearc/overseer.nvim',
+    opts = {},
+  },
   -- IDE
   {
     "coffebar/neovim-project",
     opts = {
       projects = { -- define project roots
+        "~/Developer/*",
         "~/Sites/*",
         "/var/www/*",
       },
@@ -162,7 +167,11 @@ return {
   -- },
   {
     "github/copilot.vim",
-    lazy = false
+    lazy = false,
+    config = function()
+      vim.g.copilot_no_tab_map = true;
+      vim.g.copilot_assume_mapped = true;
+    end
   },
   -- Nvim UI
   {
@@ -198,29 +207,29 @@ return {
       });
     end
   },
-  {
-    "rcarriga/nvim-notify",
-    opts = {
-      timeout = 5000,
-      background = "#FFFFFF";
-      render = "wrapped-compact",
-    },
-  },
-  {
-    "folke/noice.nvim",
-    event = "VeryLazy",
-    opts = {
-      -- add any options here
-    },
-    dependencies = {
-      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-      "MunifTanjim/nui.nvim",
-      -- OPTIONAL:
-      --   `nvim-notify` is only needed, if you want to use the notification view.
-      --   If not available, we use `mini` as the fallback
-      "rcarriga/nvim-notify",
-      }
-  },
+  -- {
+  --   "rcarriga/nvim-notify",
+  --   opts = {
+  --     timeout = 5000,
+  --     background = "#FFFFFF";
+  --     render = "wrapped-compact",
+  --   },
+  -- },
+  -- {
+  --   "folke/noice.nvim",
+  --   event = "VeryLazy",
+  --   opts = {
+  --     -- add any options here
+  --   },
+  --   dependencies = {
+  --     -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+  --     "MunifTanjim/nui.nvim",
+  --     -- OPTIONAL:
+  --     --   `nvim-notify` is only needed, if you want to use the notification view.
+  --     --   If not available, we use `mini` as the fallback
+  --     -- "rcarriga/nvim-notify",
+  --     }
+  -- },
   -- Overrides default config
   {
     "neovim/nvim-lspconfig",
