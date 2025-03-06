@@ -96,6 +96,7 @@ return {
     opts = {},
   },
   -- IDE
+  { "airblade/vim-rooter" },
   {
     "coffebar/neovim-project",
     opts = {
@@ -104,10 +105,15 @@ return {
         "~/Sites/*",
         "/var/www/*",
       },
+      last_session_on_startup = false,
+      picker = {
+        type = "telescope",
+      }
     },
     init = function()
       -- enable saving the state of plugins in the session
       vim.opt.sessionoptions:append("globals") -- save global variables that start with an uppercase letter and contain at least one lowercase letter.
+      require("nvim-tree").setup {}
     end,
     dependencies = {
       { "nvim-lua/plenary.nvim" },
