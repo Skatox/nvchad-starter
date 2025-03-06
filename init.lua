@@ -44,5 +44,6 @@ vim.g.copilot_node_command = "~/.asdf/shim/node"
 
 vim.opt.termguicolors = true
 
+require('nvim-tree').setup()
 require("hardtime").setup()
 require("overseer").setup()
