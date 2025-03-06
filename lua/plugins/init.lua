@@ -23,18 +23,9 @@ return {
     }
   },
   {
-  	"nvim-treesitter/nvim-treesitter",
-  	opts = {
-  		ensure_installed = {
-  			"vim", "lua", "vimdoc",
-       "html", "css", "php", "tsx"
-  		},
-  	},
-  },
-  {
     "mhartington/formatter.nvim",
     event = "VeryLazy",
-    opts = function ()
+    opts = function()
       return require "configs.formatter"
     end
   },
@@ -42,12 +33,6 @@ return {
   -- Code edition
   {
     "tpope/vim-commentary"
-  },
-  {
-    "nvim-tree/nvim-tree.lua",
-    opts = {
-      git = { enable = true },
-    },
   },
   {
     "tpope/vim-surround",
@@ -168,10 +153,10 @@ return {
   {
     "github/copilot.vim",
     lazy = false,
-    config = function()
-      vim.g.copilot_no_tab_map = true;
-      vim.g.copilot_assume_mapped = true;
-    end
+    -- config = function()
+    --   vim.g.copilot_no_tab_map = true;
+    --   vim.g.copilot_assume_mapped = true;
+    -- end
   },
   -- Nvim UI
   {
@@ -264,15 +249,26 @@ return {
      "m4xshen/hardtime.nvim",
      dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
      opts = {
-	disabled_keys = {
-		["<Up>"] = {"n"},
-		["<Down>"] = {"n"},
-		["<Left>"] = {"n"},
-		["<Right>"] = {"n"},
-	}
+       disabled_keys = {
+         ["<Up>"] = {"n"},
+         ["<Down>"] = {"n"},
+         ["<Left>"] = {"n"},
+         ["<Right>"] = {"n"},
+       },
      }
   },
-  -- {
+  {
+    "swaits/zellij-nav.nvim",
+    lazy = true,
+    event = "VeryLazy",
+    keys = {
+      { "<c-h>", "<cmd>ZellijNavigateLeftTab<cr>",  { silent = true, desc = "navigate left or tab"  } },
+      { "<c-j>", "<cmd>ZellijNavigateDown<cr>",  { silent = true, desc = "navigate down"  } },
+      { "<c-k>", "<cmd>ZellijNavigateUp<cr>",    { silent = true, desc = "navigate up"    } },
+      { "<c-l>", "<cmd>ZellijNavigateRightTab<cr>", { silent = true, desc = "navigate right or tab" } },
+    },
+    opts = {},
+  }  -- {
   --   "tris203/precognition.nvim",
   --   event = "VeryLazy",
   --   config = {
