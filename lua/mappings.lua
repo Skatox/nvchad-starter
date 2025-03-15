@@ -6,7 +6,6 @@ local map = vim.keymap.set
 
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
-map("n", "<F4>", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
 
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
 
@@ -42,3 +41,7 @@ map("n", "<C-S-p>", "<cmd> Telescope live_grep <CR>", { desc  = "find in files" 
 map("n", "<D-S-p>", "<cmd> Telescope live_grep <CR>", { desc  = "find in files" })
 
 -- map("i", "<S-tab>", 'copilot#Accept("<CR>")', { silent = true, expr = true, script = true })
+
+-- Visual multi
+map("v", "<C-n>", "<Plug>(VM-Find-Subword-Under)", { desc = "VM Find Subword Under" })
+map("n", "<C-n>", "<Plug>(VM-Find-Under)", { desc = "VM Find Under" })
