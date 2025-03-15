@@ -42,7 +42,7 @@ return {
     "tommcdo/vim-exchange",
     lazy = false,
   },
-  { "mg979/vim-visual-multi" },
+  -- { "mg979/vim-visual-multi" },
   { "inkarkat/vim-ReplaceWithRegister" },
 
   -- Code navigation

@@ -40,7 +40,7 @@ end)
 vim.opt.relativenumber = true
 vim.g.neovide_scale_factor = 1.5
 vim.g.neovide_input_macos_option_key_is_meta = true
-vim.g.copilot_node_command = "~/.asdf/shim/node"
+vim.g.copilot_node_command = "~/.asdf/shims/node"
 
 vim.opt.termguicolors = true
 
