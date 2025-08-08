@@ -8,6 +8,17 @@ map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
 
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
+--
+-- Remap Colemak navigation keys
+-- vim.keymap.set('n', 'h', 'h')
+-- vim.keymap.set('n', 'n', 'j')
+-- vim.keymap.set('n', 'e', 'k')
+-- vim.keymap.set('n', 'i', 'l')
+-- vim.keymap.set('v', 'h', 'h')
+-- vim.keymap.set('v', 'n', 'j')
+-- vim.keymap.set('v', 'e', 'k')
+-- vim.keymap.set('v', 'i', 'l')
+
 
 
 -- HOP
