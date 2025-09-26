@@ -47,3 +47,6 @@ vim.opt.termguicolors = true
 require('nvim-tree').setup()
 require("hardtime").setup()
 require("overseer").setup()
+require("cursor-agent").setup({})
+
+

@@ -135,6 +135,21 @@ return {
     priority = 100,
   },
   {
+    "MaximilianLloyd/tw-values.nvim",
+    keys = {
+        { "<leader>sv", "<cmd>TWValues<cr>", desc = "Show tailwind CSS values" },
+    },
+    opts = {
+        border = "rounded", -- Valid window border style,
+        show_unknown_classes = true, -- Shows the unknown classes popup
+        focus_preview = true, -- Sets the preview as the current window
+        copy_register = "", -- The register to copy values to,
+        keymaps = {
+            copy = "<C-y>"  -- Normal mode keymap to copy the CSS values between {}
+        }
+    }
+},
+  {
     "mfussenegger/nvim-dap",
     config = function ()
       require "configs.dap"
@@ -167,13 +182,21 @@ return {
   --     })
   --   end,
   -- },
+  -- {
+  --   "github/copilot.vim",
+  --   lazy = false,
+  --   config = function()
+  --      -- vim.g.copilot_no_tab_map = true;
+  --      -- vim.g.copilot_assume_mapped = true;
+  --   end
+  -- },
   {
-    "github/copilot.vim",
-    lazy = false,
+    "xTacobaco/cursor-agent.nvim",
     config = function()
-       vim.g.copilot_no_tab_map = true;
-       vim.g.copilot_assume_mapped = true;
-    end
+      vim.keymap.set("n", "<leader>ca", ":CursorAgent<CR>", { desc = "Cursor Agent: Toggle terminal" })
+      vim.keymap.set("v", "<leader>ca", ":CursorAgentSelection<CR>", { desc = "Cursor Agent: Send selection" })
+      vim.keymap.set("n", "<leader>cA", ":CursorAgentBuffer<CR>", { desc = "Cursor Agent: Send buffer" })
+    end,
   },
   {
     "CopilotC-Nvim/CopilotChat.nvim",
