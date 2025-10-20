@@ -39,7 +39,7 @@ return {
     "tommcdo/vim-exchange",
     lazy = false,
   },
-  { 
+  {
     "mg979/vim-visual-multi",
     lazy = false,
   },
@@ -166,30 +166,15 @@ return {
       require("refactoring").setup()
     end,
   },
-  -- IA toodadls
-  -- {
-  --   "codota/tabnine-nvim",
-  --   lazy = false,
-  --   build = "./dl_binaries.sh",
-  --   config = function()
-  --     require('tabnine').setup({
-  --        disable_auto_comment=true,
-  --        accept_keymap="<Tab>",
-  --        dismiss_keymap = "<C-]>",
-  --        debounce_ms = 800,
-  --                   suggestion_color = {gui = "#808080", cterm = 244},
-  --        exclude_filetypes = {"TelescopePrompt"}
-  --     })
-  --   end,
-  -- },
-  -- {
-  --   "github/copilot.vim",
-  --   lazy = false,
-  --   config = function()
-  --      -- vim.g.copilot_no_tab_map = true;
-  --      -- vim.g.copilot_assume_mapped = true;
-  --   end
-  -- },
+  -- IA Tools
+  {
+    "github/copilot.vim",
+    lazy = false,
+    config = function()
+       -- vim.g.copilot_no_tab_map = true;
+       -- vim.g.copilot_assume_mapped = true;
+    end
+  },
   {
     "xTacobaco/cursor-agent.nvim",
     config = function()
@@ -305,18 +290,7 @@ return {
        },
      }
   },
-  {
-    "swaits/zellij-nav.nvim",
-    lazy = true,
-    event = "VeryLazy",
-    keys = {
-      { "<c-h>", "<cmd>ZellijNavigateLeftTab<cr>",  { silent = true, desc = "navigate left or tab"  } },
-      { "<c-j>", "<cmd>ZellijNavigateDown<cr>",  { silent = true, desc = "navigate down"  } },
-      { "<c-k>", "<cmd>ZellijNavigateUp<cr>",    { silent = true, desc = "navigate up"    } },
-      { "<c-l>", "<cmd>ZellijNavigateRightTab<cr>", { silent = true, desc = "navigate right or tab" } },
-    },
-    opts = {},
-  }  -- {
+  -- {
   --   "tris203/precognition.nvim",
   --   event = "VeryLazy",
   --   config = {

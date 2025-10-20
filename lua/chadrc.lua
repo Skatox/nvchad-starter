@@ -14,6 +14,13 @@ M.ui = {
 	-- },
 }
 
+-- Configure nvim-cmp with ghost text
+M.cmp = {
+  experimental = {
+    ghost_text = true,
+  },
+}
+
 -- M.nvdash = { load_on_startup = true }
 -- M.ui = {
 --       tabufline = {
