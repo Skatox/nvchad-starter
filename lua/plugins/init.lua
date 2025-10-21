@@ -185,11 +185,17 @@ return {
   },
   {
     "CopilotC-Nvim/CopilotChat.nvim",
-     dependencies = {
+    lazy = false,
+    dependencies = {
        { "nvim-lua/plenary.nvim", branch = "master" },
-     },
-     build = "make tiktoken",
-     opts = { },
+    },
+    build = "make tiktoken",
+    opts = { },
+    keys = {
+      { "<leader>cc", "<cmd>CopilotChatToggle<cr>", desc = "Open Copilot Chat" },
+      { "<leader>cr", "<cmd>CopilotChatReset<cr>", desc = "Reset Copilot Chat" },
+      { "<leader>cs", "<cmd>CopilotChatStop<cr>", desc = "Stop Copilot Chat Session" },
+    },
   },
   -- Nvim UI
   {
