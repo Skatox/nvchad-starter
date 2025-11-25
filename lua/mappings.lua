@@ -20,6 +20,10 @@ map("i", "jk", "<ESC>")
 -- vim.keymap.set('v', 'i', 'l')
 
 
+-- Github
+map('i', '<C-j>', function ()
+  vim.fn.feedkeys(vim.fn['copilot#Accept'](), '')
+end, { desc = 'Copilot Accept', noremap = true, silent = true })
 
 -- HOP
 map("n", "<leader>w", "<cmd>HopWord<CR>", { desc  = "Easy motion" })

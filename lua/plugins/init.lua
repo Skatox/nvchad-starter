@@ -171,8 +171,8 @@ return {
     "github/copilot.vim",
     lazy = false,
     config = function()
-       -- vim.g.copilot_no_tab_map = true;
-       -- vim.g.copilot_assume_mapped = true;
+       vim.g.copilot_no_tab_map = true;
+       vim.g.copilot_assume_mapped = true;
     end
   },
   {
@@ -188,6 +188,7 @@ return {
     lazy = false,
     dependencies = {
        { "nvim-lua/plenary.nvim", branch = "master" },
+       { "nvim-telescope/telescope-ui-select.nvim", branch = "master" },
     },
     build = "make tiktoken",
     opts = { },
