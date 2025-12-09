@@ -21,7 +21,7 @@ map("i", "jk", "<ESC>")
 
 
 -- Github
-map('i', '<C-j>', function ()
+map('i', '<Right>', function ()
   vim.fn.feedkeys(vim.fn['copilot#Accept'](), '')
 end, { desc = 'Copilot Accept', noremap = true, silent = true })
 
@@ -60,3 +60,16 @@ map("n", "<D-S-p>", "<cmd> Telescope live_grep <CR>", { desc  = "find in files" 
 -- Visual multi
 map("v", "<C-n>", "<Plug>(VM-Find-Subword-Under)", { desc = "VM Find Subword Under" })
 map("n", "<C-n>", "<Plug>(VM-Find-Under)", { desc = "VM Find Under" })
+
+-- Terminal and Window Navigation with Alt+hjkl
+map("n", "<A-h>", "<C-w>h", { desc = "Move to left window" })
+map("n", "<A-j>", "<C-w>j", { desc = "Move to down window" })
+map("n", "<A-k>", "<C-w>k", { desc = "Move to up window" })
+map("n", "<A-l>", "<C-w>l", { desc = "Move to right window" })
+
+-- Terminal navigation (when in terminal mode)
+map("t", "<A-h>", "<C-\\><C-n><C-w>h", { desc = "Move to left window from terminal" })
+map("t", "<A-j>", "<C-\\><C-n><C-w>j", { desc = "Move to down window from terminal" })
+map("t", "<A-k>", "<C-\\><C-n><C-w>k", { desc = "Move to up window from terminal" })
+map("t", "<A-l>", "<C-\\><C-n><C-w>l", { desc = "Move to right window from terminal" })
+
