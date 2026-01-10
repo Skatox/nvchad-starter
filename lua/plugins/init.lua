@@ -49,20 +49,32 @@ return {
   {
     'smoka7/hop.nvim',
     version = "*",
-    lazy=false,
+    lazy = false,
     opts = {
-        keys = 'etovxqpdygfblzhckisuran'
+      keys = 'etovxqpdygfblzhckisuran'
     },
     config = function()
-      require'hop'.setup {}
+      require 'hop'.setup {}
       require "configs.hop-config"
     end,
   },
   {
     "christoomey/vim-tmux-navigator",
-    config = function()
-      require "configs.tmux"
-    end,
+    cmd = {
+      "TmuxNavigateLeft",
+      "TmuxNavigateDown",
+      "TmuxNavigateUp",
+      "TmuxNavigateRight",
+      "TmuxNavigatePrevious",
+      "TmuxNavigatorProcessList",
+    },
+    keys = {
+      { "<c-h>",  "<cmd><C-U>TmuxNavigateLeft<cr>" },
+      { "<c-j>",  "<cmd><C-U>TmuxNavigateDown<cr>" },
+      { "<c-k>",  "<cmd><C-U>TmuxNavigateUp<cr>" },
+      { "<c-l>",  "<cmd><C-U>TmuxNavigateRight<cr>" },
+      { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
+    },
   },
 
   -- Control version
@@ -94,10 +106,10 @@ return {
     -- load the plugin at startup
     event = "VeryLazy",
     opts = {
-        enabled = false,
-        message_template = " <summary> • <date> • <author> • <<sha>>", -- template for the blame message, check the Message template section for more options
-        date_format = "%m-%d-%Y %H:%M:%S", -- template for the date, check Date format section for more options
-        virtual_text_column = 1,  -- virtual text start column, check Start virtual text at column section for more options
+      enabled = false,
+      message_template = " <summary> • <date> • <author> • <<sha>>", -- template for the blame message, check the Message template section for more options
+      date_format = "%m-%d-%Y %H:%M:%S", -- template for the date, check Date format section for more options
+      virtual_text_column = 1, -- virtual text start column, check Start virtual text at column section for more options
     },
   },
   { "mhinz/vim-signify" },
@@ -137,21 +149,21 @@ return {
   {
     "MaximilianLloyd/tw-values.nvim",
     keys = {
-        { "<leader>sv", "<cmd>TWValues<cr>", desc = "Show tailwind CSS values" },
+      { "<leader>sv", "<cmd>TWValues<cr>", desc = "Show tailwind CSS values" },
     },
     opts = {
-        border = "rounded", -- Valid window border style,
-        show_unknown_classes = true, -- Shows the unknown classes popup
-        focus_preview = true, -- Sets the preview as the current window
-        copy_register = "", -- The register to copy values to,
-        keymaps = {
-            copy = "<C-y>"  -- Normal mode keymap to copy the CSS values between {}
-        }
+      border = "rounded",          -- Valid window border style,
+      show_unknown_classes = true, -- Shows the unknown classes popup
+      focus_preview = true,        -- Sets the preview as the current window
+      copy_register = "",          -- The register to copy values to,
+      keymaps = {
+        copy = "<C-y>"             -- Normal mode keymap to copy the CSS values between {}
+      }
     }
-},
+  },
   {
     "mfussenegger/nvim-dap",
-    config = function ()
+    config = function()
       require "configs.dap"
     end
   },
@@ -167,14 +179,14 @@ return {
     end,
   },
   -- IA Tools
-  {
-    "github/copilot.vim",
-    lazy = false,
-    config = function()
-       vim.g.copilot_no_tab_map = true;
-       vim.g.copilot_assume_mapped = true;
-    end
-  },
+  -- {
+  --   "github/copilot.vim",
+  --   lazy = false,
+  --   config = function()
+  --      vim.g.copilot_no_tab_map = true;
+  --      vim.g.copilot_assume_mapped = true;
+  --   end
+  -- },
   {
     "xTacobaco/cursor-agent.nvim",
     config = function()
@@ -183,21 +195,21 @@ return {
       vim.keymap.set("n", "<leader>cA", ":CursorAgentBuffer<CR>", { desc = "Cursor Agent: Send buffer" })
     end,
   },
-  {
-    "CopilotC-Nvim/CopilotChat.nvim",
-    lazy = false,
-    dependencies = {
-       { "nvim-lua/plenary.nvim", branch = "master" },
-       { "nvim-telescope/telescope-ui-select.nvim", branch = "master" },
-    },
-    build = "make tiktoken",
-    opts = { },
-    keys = {
-      { "<leader>cc", "<cmd>CopilotChatToggle<cr>", desc = "Open Copilot Chat" },
-      { "<leader>cr", "<cmd>CopilotChatReset<cr>", desc = "Reset Copilot Chat" },
-      { "<leader>cs", "<cmd>CopilotChatStop<cr>", desc = "Stop Copilot Chat Session" },
-    },
-  },
+  -- {
+  --   "CopilotC-Nvim/CopilotChat.nvim",
+  --   lazy = false,
+  --   dependencies = {
+  --      { "nvim-lua/plenary.nvim", branch = "master" },
+  --      { "nvim-telescope/telescope-ui-select.nvim", branch = "master" },
+  --   },
+  --   build = "make tiktoken",
+  --   opts = { },
+  --   keys = {
+  --     { "<leader>cc", "<cmd>CopilotChatToggle<cr>", desc = "Open Copilot Chat" },
+  --     { "<leader>cr", "<cmd>CopilotChatReset<cr>", desc = "Reset Copilot Chat" },
+  --     { "<leader>cs", "<cmd>CopilotChatStop<cr>", desc = "Stop Copilot Chat Session" },
+  --   },
+  -- },
   -- Nvim UI
   {
     'mvllow/modes.nvim',
@@ -205,7 +217,7 @@ return {
     lazy = false,
     config = function()
       require('modes').setup({
-      colors = {
+        colors = {
           bg = "", -- Optional bg param, defaults to Normal hl group
           copy = "#f5c359",
           delete = "#c75c6a",
@@ -236,7 +248,7 @@ return {
     "rcarriga/nvim-notify",
     opts = {
       timeout = 5000,
-      background = "#FFFFFF";
+      background = "#FFFFFF",
       render = "wrapped-compact",
     },
   },
@@ -253,7 +265,7 @@ return {
       --   `nvim-notify` is only needed, if you want to use the notification view.
       --   If not available, we use `mini` as the fallback
       -- "rcarriga/nvim-notify",
-      }
+    }
   },
   -- Overrides default config
   {
@@ -284,18 +296,18 @@ return {
     lazy = false,
   },
 
--- Improve VIM usage
+  -- Improve VIM usage
   {
-     "m4xshen/hardtime.nvim",
-     dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
-     opts = {
-       disabled_keys = {
-         ["<Up>"] = {"n"},
-         ["<Down>"] = {"n"},
-         ["<Left>"] = {"n"},
-         ["<Right>"] = {"n"},
-       },
-     }
+    "m4xshen/hardtime.nvim",
+    dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+    opts = {
+      disabled_keys = {
+        ["<Up>"] = { "n" },
+        ["<Down>"] = { "n" },
+        ["<Left>"] = { "n" },
+        ["<Right>"] = { "n" },
+      },
+    }
   },
   -- {
   --   "tris203/precognition.nvim",
