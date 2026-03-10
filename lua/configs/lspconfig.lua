@@ -22,6 +22,15 @@ vim.lsp.enable(servers)
 
 local map = vim.keymap.set
 
+local format_on_save_group = vim.api.nvim_create_augroup("LspFormatOnSave", { clear = false })
+local format_on_save_skip_ft = {
+  javascript = true,
+  javascriptreact = true,
+  typescript = true,
+  typescriptreact = true,
+  vue = true,
+}
+
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(ev)
     local client = vim.lsp.get_client_by_id(ev.data.client_id)
@@ -77,10 +86,18 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
       -- Auto-format on save
       if client:supports_method('textDocument/formatting') then
+        -- Only one autocmd per buffer; multiple LSP clients can attach.
+        vim.api.nvim_clear_autocmds({ group = format_on_save_group, buffer = buffer })
         vim.api.nvim_create_autocmd('BufWritePre', {
+          group = format_on_save_group,
           buffer = buffer,
           callback = function()
-            vim.lsp.buf.format({ bufnr = buffer, id = client.id })
+            local ft = vim.bo[buffer].filetype
+            if format_on_save_skip_ft[ft] then
+              return
+            end
+
+            vim.lsp.buf.format({ bufnr = buffer })
           end,
         })
       end
