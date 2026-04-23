@@ -188,28 +188,39 @@ return {
   --   end
   -- },
   {
-    "xTacobaco/cursor-agent.nvim",
+    "coder/claudecode.nvim",
+    dependencies = { "folke/snacks.nvim" },
+    config = true,
+    keys = {
+      { "<leader>a",  nil,                              desc = "AI/Claude Code" },
+      { "<leader>ac", "<cmd>ClaudeCode<cr>",            desc = "Toggle Claude" },
+      { "<leader>af", "<cmd>ClaudeCodeFocus<cr>",       desc = "Focus Claude" },
+      { "<leader>ar", "<cmd>ClaudeCode --resume<cr>",   desc = "Resume Claude" },
+      { "<leader>aC", "<cmd>ClaudeCode --continue<cr>", desc = "Continue Claude" },
+      { "<leader>am", "<cmd>ClaudeCodeSelectModel<cr>", desc = "Select Claude model" },
+      { "<leader>ab", "<cmd>ClaudeCodeAdd %<cr>",       desc = "Add current buffer" },
+      { "<leader>as", "<cmd>ClaudeCodeSend<cr>",        mode = "v",                  desc = "Send to Claude" },
+      {
+        "<leader>as",
+        "<cmd>ClaudeCodeTreeAdd<cr>",
+        desc = "Add file",
+        ft = { "NvimTree", "neo-tree", "oil", "minifiles", "netrw" },
+      },
+      -- Diff management
+      { "<leader>aa", "<cmd>ClaudeCodeDiffAccept<cr>", desc = "Accept diff" },
+      { "<leader>ad", "<cmd>ClaudeCodeDiffDeny<cr>",   desc = "Deny diff" },
+    },
+  },
+  {
+    "aug6th/cursoragent.nvim",
+    lazy = false,
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
     config = function()
-      vim.keymap.set("n", "<leader>ca", ":CursorAgent<CR>", { desc = "Cursor Agent: Toggle terminal" })
-      vim.keymap.set("v", "<leader>ca", ":CursorAgentSelection<CR>", { desc = "Cursor Agent: Send selection" })
-      vim.keymap.set("n", "<leader>cA", ":CursorAgentBuffer<CR>", { desc = "Cursor Agent: Send buffer" })
+      require("cursoragent").setup({})
     end,
   },
-  -- {
-  --   "CopilotC-Nvim/CopilotChat.nvim",
-  --   lazy = false,
-  --   dependencies = {
-  --      { "nvim-lua/plenary.nvim", branch = "master" },
-  --      { "nvim-telescope/telescope-ui-select.nvim", branch = "master" },
-  --   },
-  --   build = "make tiktoken",
-  --   opts = { },
-  --   keys = {
-  --     { "<leader>cc", "<cmd>CopilotChatToggle<cr>", desc = "Open Copilot Chat" },
-  --     { "<leader>cr", "<cmd>CopilotChatReset<cr>", desc = "Reset Copilot Chat" },
-  --     { "<leader>cs", "<cmd>CopilotChatStop<cr>", desc = "Stop Copilot Chat Session" },
-  --   },
-  -- },
   -- Nvim UI
   {
     'mvllow/modes.nvim',
@@ -313,28 +324,28 @@ return {
   --   "tris203/precognition.nvim",
   --   event = "VeryLazy",
   --   config = {
-  --    startVisible = true,
-  --    showBlankVirtLine = true,
-  --    highlightColor = { link = "Comment" },
+  --     startVisible = true,
+  --     showBlankVirtLine = true,
+  --     highlightColor = { link = "Comment" },
   --     hints = {
-  --         Caret = { text = "^", prio = 2 },
-  --         Dollar = { text = "$", prio = 1 },
-  --         MatchingPair = { text = "%", prio = 5 },
-  --         Zero = { text = "0", prio = 1 },
-  --         w = { text = "w", prio = 10 },
-  --         b = { text = "b", prio = 9 },
-  --         e = { text = "e", prio = 8 },
-  --         W = { text = "W", prio = 7 },
-  --         B = { text = "B", prio = 6 },
-  --         E = { text = "E", prio = 5 },
-  --    },
-  --    gutterHints = {
-  --        -- prio is not currently used for gutter hints
-  --        G = { text = "G", prio = 1 },
-  --        gg = { text = "gg", prio = 1 },
-  --        PrevParagraph = { text = "{", prio = 1 },
-  --        NextParagraph = { text = "}", prio = 1 },
-  --    },
+  --       Caret = { text = "^", prio = 2 },
+  --       Dollar = { text = "$", prio = 1 },
+  --       MatchingPair = { text = "%", prio = 5 },
+  --       Zero = { text = "0", prio = 1 },
+  --       w = { text = "w", prio = 10 },
+  --       b = { text = "b", prio = 9 },
+  --       e = { text = "e", prio = 8 },
+  --       W = { text = "W", prio = 7 },
+  --       B = { text = "B", prio = 6 },
+  --       E = { text = "E", prio = 5 },
+  --     },
+  --     gutterHints = {
+  --       -- prio is not currently used for gutter hints
+  --       G = { text = "G", prio = 1 },
+  --       gg = { text = "gg", prio = 1 },
+  --       PrevParagraph = { text = "{", prio = 1 },
+  --       NextParagraph = { text = "}", prio = 1 },
+  --     },
   --   },
-  --  }
+  -- }
 }
