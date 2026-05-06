@@ -38,6 +38,7 @@ end)
 
 -- Miguel's customizations
 vim.opt.relativenumber = true
+vim.opt.statuscolumn = "%s %{v:relnum} %{v:lnum}"
 vim.g.neovide_scale_factor = 1.5
 vim.g.neovide_input_macos_option_key_is_meta = true
 vim.g.copilot_node_command = "~/.asdf/installs/nodejs/24.10.0/bin/node"
