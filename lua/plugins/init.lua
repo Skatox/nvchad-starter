@@ -221,6 +221,23 @@ return {
       require("cursoragent").setup({})
     end,
   },
+  {
+    "ishiooon/codex.nvim",
+    dependencies = { "folke/snacks.nvim" },
+    config = true,
+    lazy = false,
+    keys = {
+      { "<leader>cc", "<cmd>Codex<cr>",      desc = "Codex: Toggle" },
+      { "<leader>cf", "<cmd>CodexFocus<cr>", desc = "Codex: Focus" },
+      { "<leader>cs", "<cmd>CodexSend<cr>",  mode = "v",            desc = "Codex: Send selection" },
+      {
+        "<leader>cs",
+        "<cmd>CodexTreeAdd<cr>",
+        desc = "Codex: Add file",
+        ft = { "neo-tree", "oil" },
+      },
+    },
+  },
   -- Nvim UI
   {
     'mvllow/modes.nvim',
