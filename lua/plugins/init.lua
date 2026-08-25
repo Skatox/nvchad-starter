@@ -6,19 +6,15 @@ return {
     opts = require "configs.conform",
   },
   {
-    "neovim/nvim-lspconfig",
-    config = function()
-      require "configs.lspconfig"
-    end,
-  },
-  {
     "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
         "eslint-lsp",
         "js-debug-adapter",
         "prettier",
-        "typescript-language-server"
+        "typescript-language-server",
+        "pylsp",
+        "marksman"
       }
     }
   },
@@ -113,6 +109,10 @@ return {
     },
   },
   { "mhinz/vim-signify" },
+  {
+    "sindrets/diffview.nvim",
+    lazy = false,
+  },
   -- Task Manager
   {
     'stevearc/overseer.nvim',
@@ -190,6 +190,7 @@ return {
   {
     "coder/claudecode.nvim",
     dependencies = { "folke/snacks.nvim" },
+    lazy = true,
     config = true,
     keys = {
       { "<leader>a",  nil,                              desc = "AI/Claude Code" },
@@ -211,33 +212,33 @@ return {
       { "<leader>ad", "<cmd>ClaudeCodeDiffDeny<cr>",   desc = "Deny diff" },
     },
   },
-  {
-    "aug6th/cursoragent.nvim",
-    lazy = false,
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
-    config = function()
-      require("cursoragent").setup({})
-    end,
-  },
-  {
-    "ishiooon/codex.nvim",
-    dependencies = { "folke/snacks.nvim" },
-    config = true,
-    lazy = false,
-    keys = {
-      { "<leader>cc", "<cmd>Codex<cr>",      desc = "Codex: Toggle" },
-      { "<leader>cf", "<cmd>CodexFocus<cr>", desc = "Codex: Focus" },
-      { "<leader>cs", "<cmd>CodexSend<cr>",  mode = "v",            desc = "Codex: Send selection" },
-      {
-        "<leader>cs",
-        "<cmd>CodexTreeAdd<cr>",
-        desc = "Codex: Add file",
-        ft = { "neo-tree", "oil" },
-      },
-    },
-  },
+  -- {
+  --   "aug6th/cursoragent.nvim",
+  --   lazy = false,
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --   },
+  --   config = function()
+  --     require("cursoragent").setup({})
+  --   end,
+  -- },
+  -- {
+  --   "ishiooon/codex.nvim",
+  --   dependencies = { "folke/snacks.nvim" },
+  --   config = true,
+  --   lazy = false,
+  --   keys = {
+  --     { "<leader>cc", "<cmd>Codex<cr>",      desc = "Codex: Toggle" },
+  --     { "<leader>cf", "<cmd>CodexFocus<cr>", desc = "Codex: Focus" },
+  --     { "<leader>cs", "<cmd>CodexSend<cr>",  mode = "v",            desc = "Codex: Send selection" },
+  --     {
+  --       "<leader>cs",
+  --       "<cmd>CodexTreeAdd<cr>",
+  --       desc = "Codex: Add file",
+  --       ft = { "neo-tree", "oil" },
+  --     },
+  --   },
+  -- },
   -- Nvim UI
   {
     'mvllow/modes.nvim',
@@ -294,13 +295,6 @@ return {
       --   If not available, we use `mini` as the fallback
       -- "rcarriga/nvim-notify",
     }
-  },
-  -- Overrides default config
-  {
-    "neovim/nvim-lspconfig",
-    config = function()
-      require "configs.lspconfig"
-    end,
   },
 
   -- PHP

@@ -29,10 +29,9 @@ require("lazy").setup({
 dofile(vim.g.base46_cache .. "defaults")
 dofile(vim.g.base46_cache .. "statusline")
 
-require "options"
-require "autocmds"
-
 vim.schedule(function()
+  require "options"
+  require "autocmds"
   require "mappings"
 end)
 
@@ -85,6 +84,8 @@ else
 end
 
 
-require('nvim-tree').setup()
-require("hardtime").setup()
-require("overseer").setup()
+vim.schedule(function()
+  require('nvim-tree').setup()
+  require("hardtime").setup()
+  require("overseer").setup()
+end)

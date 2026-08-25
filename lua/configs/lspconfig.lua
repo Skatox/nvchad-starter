@@ -15,9 +15,15 @@ local servers = {
   "vue_ls",
   "lua_ls",
   "intelephense",
-  "copilot"
+  "copilot",
 }
+
+-- Enable built-in and commonly available servers
 vim.lsp.enable(servers)
+
+-- Configure optional servers that may not be installed yet
+pcall(function() vim.lsp.enable { "pylsp" } end)
+pcall(function() vim.lsp.enable { "marksman" } end)
 
 
 local map = vim.keymap.set
